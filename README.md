@@ -1,11 +1,11 @@
 # Set up WireGuard
 
-This GitHub Action configures and initiates a secure WireGuard VPN connection in your workflow.
+This GitHub Action configures and initiates a secure WireGuard VPN connection in the calling workflow.
 
 ```yml
 - uses: inpsyde/setup-wireguard@v1
   with:
-    # The full content of your WireGuard configuration file (`.conf`).
+    # The full content of the WireGuard configuration file (`.conf`).
     WIREGUARD_CONFIGURATION: ''
 ```
 
