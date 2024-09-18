@@ -1,4 +1,4 @@
-# GitHub Action: WireGuard Setup
+# Set up WireGuard
 
 This GitHub Action configures and initiates a secure WireGuard VPN connection in your workflow.
 
