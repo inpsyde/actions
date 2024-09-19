@@ -33,12 +33,12 @@ jobs:
         continue-on-error: true
 
       - name: Verify Validation Failure
-        if: ${{ steps.invalid_test.conclusion == 'failure' }}
+        if: ${{ steps.invalid_test.outcome == 'failure' }}
         run: |
           echo "Validation test passed: action failed as expected due to invalid configuration."
 
       - name: Fail if Action Did Not Fail Validation
-        if: ${{ steps.invalid_test.conclusion != 'failure' }}
+        if: ${{ steps.invalid_test.outcome != 'failure' }}
         run: |
           echo "Validation test failed: action did not fail as expected."
           exit 1
