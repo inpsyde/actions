@@ -46,7 +46,7 @@ These directives can execute shell commands when the WireGuard interface is brou
 posing a security risk if misused. If the configuration includes any of these directives, the action
 will fail with an error message:
 
-```
+```text
 Error: Configuration contains disallowed directives (PreUp, PostUp, PreDown, PostDown).
 ```
 
