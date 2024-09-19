@@ -2,6 +2,10 @@
 
 A collection of multi-purpose GitHub Actions.
 
+> [!IMPORTANT]  
+> **Supported Runners:** **Ubuntu (Linux) runners only.** This action is incompatible with macOS or
+Windows runners.
+
 ## Available Actions
 
 ### [Set up WireGuard](./setup-wireguard/README.md)
