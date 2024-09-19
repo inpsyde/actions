@@ -10,11 +10,11 @@ A collection of multi-purpose GitHub Actions.
 
 **Usage:**
 
-  ```yml
-  - uses: inpsyde/actions/setup-wireguard@v1
-    with:
-      WIREGUARD_CONFIGURATION: ${{ secrets.WIREGUARD_CONFIGURATION }}
-  ```
+```yml
+- uses: inpsyde/actions/setup-wireguard@v1
+  with:
+    WIREGUARD_CONFIGURATION: ${{ secrets.WIREGUARD_CONFIGURATION }}
+```
 
 ## Copyright and License
 

@@ -21,11 +21,11 @@ jobs:
         with:
           WIREGUARD_CONFIGURATION: |
             [Interface]
-            PrivateKey = dummy_private_key
+            PrivateKey = Ad41G4k05XpMtfqqEemq1Nai3yWGLxtZ50NPNbOORxg=
             Address = 10.0.0.1/24
 
             [Peer]
-            PublicKey = dummy_public_key
+            PublicKey = A+mvyIEJgkE/UfAEojSxk5bG4PiOLSigWiCBCsSM2TY=
             AllowedIPs = 0.0.0.0/0
             Endpoint = dummy_endpoint:51820
 
@@ -42,12 +42,12 @@ jobs:
         with:
           WIREGUARD_CONFIGURATION: |
             [Interface]
-            PrivateKey = dummy_private_key
+            PrivateKey = Ad41G4k05XpMtfqqEemq1Nai3yWGLxtZ50NPNbOORxg=
             Address = 10.0.0.1/24
             PostUp = echo "This should fail"
 
             [Peer]
-            PublicKey = dummy_public_key
+            PublicKey = A+mvyIEJgkE/UfAEojSxk5bG4PiOLSigWiCBCsSM2TY=
             AllowedIPs = 0.0.0.0/0
             Endpoint = dummy_endpoint:51820
         continue-on-error: true
