@@ -1,4 +1,4 @@
-# Inpsyde Actions
+# Syde Actions
 
 A collection of multi-purpose GitHub Actions.
 

@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-invalid-config:
-    name: Test with Invalid Configuration
+    name: Test Validation Logic
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -32,13 +32,13 @@ jobs:
             Endpoint = dummy_endpoint:51820
         continue-on-error: true
 
-      - name: Verify Action Failure
-        if: ${{ steps.invalid_test.outcome == 'failure' }}
+      - name: Verify Validation Failure
+        if: ${{ steps.invalid_test.conclusion == 'failure' }}
         run: |
-          echo "Test passed: action failed as expected."
+          echo "Validation test passed: action failed as expected due to invalid configuration."
 
-      - name: Fail if Action Did Not Fail
-        if: ${{ steps.invalid_test.outcome != 'failure' }}
+      - name: Fail if Action Did Not Fail Validation
+        if: ${{ steps.invalid_test.conclusion != 'failure' }}
         run: |
-          echo "Test failed: action did not fail as expected."
+          echo "Validation test failed: action did not fail as expected."
           exit 1
