@@ -1,6 +1,6 @@
 {
   "name": "@inpsyde/actions",
-  "description": "A collection of multi-purpose reusable GitHub Actions.",
+  "description": "A collection of multi-purpose GitHub Actions.",
   "version": "1.0.0",
   "author": "Syde GmbH",
   "bugs": {
