@@ -1,0 +1,19 @@
+name: Linting
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.yml'
+      - '**.md'
+  workflow_dispatch:
+
+jobs:
+  wp-scripts-lint:
+    uses: inpsyde/reusable-workflows/.github/workflows/wp-scripts-lint.yml@main
+    with:
+      LINT_TOOLS: '["md-docs"]'
+
+  actionlint:
+    uses: inpsyde/reusable-workflows/.github/workflows/lint-workflows.yml@feat/actionlint

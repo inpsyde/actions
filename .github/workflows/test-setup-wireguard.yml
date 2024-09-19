@@ -1,0 +1,64 @@
+name: Test "Set up WireGuard" Action
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.yml'
+  workflow_dispatch:
+
+jobs:
+  test-valid-config:
+    name: Test with Valid Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Action with Valid Configuration
+        uses: ./setup-wireguard
+        with:
+          WIREGUARD_CONFIGURATION: |
+            [Interface]
+            PrivateKey = dummy_private_key
+            Address = 10.0.0.1/24
+
+            [Peer]
+            PublicKey = dummy_public_key
+            AllowedIPs = 0.0.0.0/0
+            Endpoint = dummy_endpoint:51820
+
+  test-invalid-config:
+    name: Test with Invalid Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Action with Invalid Configuration
+        id: invalid_test
+        uses: ./setup-wireguard
+        with:
+          WIREGUARD_CONFIGURATION: |
+            [Interface]
+            PrivateKey = dummy_private_key
+            Address = 10.0.0.1/24
+            PostUp = echo "This should fail"
+
+            [Peer]
+            PublicKey = dummy_public_key
+            AllowedIPs = 0.0.0.0/0
+            Endpoint = dummy_endpoint:51820
+        continue-on-error: true
+
+      - name: Verify Action Failure
+        if: ${{ steps.invalid_test.outcome == 'failure' }}
+        run: |
+          echo "Test passed: action failed as expected."
+
+      - name: Fail if Action Did Not Fail
+        if: ${{ steps.invalid_test.outcome != 'failure' }}
+        run: |
+          echo "Test failed: action did not fail as expected."
+          exit 1
