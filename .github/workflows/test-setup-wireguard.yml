@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '**.yml'
+      - 'setup-wireguard/action.yml'
   workflow_dispatch:
 
 jobs:
