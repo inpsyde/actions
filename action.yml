@@ -11,8 +11,21 @@ runs:
   steps:
     - run: |
         sudo apt-get update && sudo apt-get install -y wireguard
-        echo "${{ secrets.WIREGUARD_CONFIGURATION }}" > wg0.conf
+        
+        # Store the WireGuard configuration content in a variable
+        CONFIG_CONTENT="${{ inputs.WIREGUARD_CONFIGURATION }}"
+        
+        # Validation logic: Disallow dangerous directives
+        if echo "$CONFIG_CONTENT" | grep -E '^\s*(PreUp|PostUp|PreDown|PostDown)\s*=' >/dev/null; then
+          echo "Error: Configuration contains disallowed and potentially dangerous directives (PreUp, PostUp, PreDown, PostDown)."
+          exit 1
+        fi
+        
+        # Write the validated configuration to a file
+        echo "$CONFIG_CONTENT" > wg0.conf
         sudo chmod 600 wg0.conf
+        
+        # Bring up the WireGuard interface using the validated configuration
         sudo wg-quick up ./wg0.conf
       shell: bash
 
