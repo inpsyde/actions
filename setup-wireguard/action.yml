@@ -18,7 +18,7 @@ runs:
           exit 1
         fi
 
-        sudo apt-get update && sudo apt-get install -y wireguard
+        sudo apt-get update && sudo apt-get install -y wireguard-tools openresolv
 
         sudo wg-quick up ./wg0.conf
       shell: bash
