@@ -60,6 +60,10 @@ jobs:
             Endpoint = demo.wireguard.com:${{ needs.generate-config.outputs.SERVER_PORT }}
             PersistentKeepalive = 25
 
+      - name: Verify WireGuard Connectivity
+        run: |
+          curl --fail http://192.168.4.1
+
   test-invalid-config:
     name: Test with Invalid Configuration
     needs: generate-config
