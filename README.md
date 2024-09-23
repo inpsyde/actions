@@ -1,5 +1,9 @@
 # Syde Actions
 
+[![GitHub Release](https://img.shields.io/github/v/release/inpsyde/actions)](https://github.com/inpsyde/actions/releases)
+[![Status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://github.com/inpsyde/actions)
+[![License](https://img.shields.io/github/license/inpsyde/actions)](./LICENSE)
+
 A collection of multi-purpose GitHub Actions.
 
 > [!IMPORTANT]  

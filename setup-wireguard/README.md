@@ -1,5 +1,7 @@
 # Set up WireGuard
 
+[![Test "Set up WireGuard" Action](https://img.shields.io/github/actions/workflow/status/inpsyde/actions/test-setup-wireguard.yml)](https://github.com/inpsyde/actions/actions/workflows/test-setup-wireguard.yml)
+
 This GitHub Action configures and initiates a secure WireGuard VPN connection in the calling
 workflow.
 
