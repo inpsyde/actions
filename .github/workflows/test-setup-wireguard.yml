@@ -19,9 +19,9 @@ jobs:
       INTERNAL_IP: ${{ steps.generate.outputs.INTERNAL_IP }}
     steps:
       - name: Generate WireGuard configuration
+        # https://www.wireguard.com/quickstart/#demo-server
         id: generate
         run: |
-          set -e
           sudo apt-get update && sudo apt-get install -y wireguard-tools
           PRIVATE_KEY=$(wg genkey)
           PUBLIC_KEY=$(echo "$PRIVATE_KEY" | wg pubkey)
