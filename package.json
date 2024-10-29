@@ -1,0 +1,26 @@
+{
+  "name": "@inpsyde/actions",
+  "description": "A collection of multi-purpose GitHub Actions.",
+  "version": "1.0.0",
+  "author": "Syde GmbH",
+  "bugs": {
+    "url": "https://github.com/inpsyde/actions/issues"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0"
+  },
+  "homepage": "https://github.com/inpsyde/actions#readme",
+  "keywords": [
+    "github-actions",
+    "reusable-workflows",
+    "wireguard"
+  ],
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inpsyde/actions.git"
+  },
+  "scripts": {
+    "lint:md": "wp-scripts lint-md-docs"
+  }
+}

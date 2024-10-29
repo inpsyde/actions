@@ -1,0 +1,28 @@
+name: Set up WireGuard
+description: Set up a WireGuard connection.
+
+inputs:
+  WIREGUARD_CONFIGURATION:
+    description: Content of the WireGuard configuration file (.conf).
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        echo "${{ inputs.WIREGUARD_CONFIGURATION }}" > wg0.conf
+        sudo chmod 600 wg0.conf
+
+        if grep -E '^\s*(PreUp|PostUp|PreDown|PostDown)\s*=' wg0.conf >/dev/null; then
+          echo "Error: Configuration contains disallowed and potentially dangerous directives (PreUp, PostUp, PreDown, PostDown)."
+          exit 1
+        fi
+
+        sudo apt-get update && sudo apt-get install -y wireguard-tools openresolv
+
+        sudo wg-quick up ./wg0.conf
+      shell: bash
+
+branding:
+  icon: lock
+  color: green
