@@ -9,7 +9,7 @@ workflow.
 - uses: inpsyde/actions/setup-wireguard@v1
   with:
     # The full content of the WireGuard configuration file (`.conf`).
-    WIREGUARD_CONFIGURATION: ''
+    wireguard-configuration: ''
 ```
 
 ## Features
@@ -25,7 +25,7 @@ workflow.
 - name: Set up WireGuard
   uses: inpsyde/actions/setup-wireguard@v1
   with:
-    WIREGUARD_CONFIGURATION: ${{ secrets.WIREGUARD_CONFIGURATION }}
+    wireguard-configuration: ${{ secrets.WIREGUARD_CONFIGURATION }}
 ```
 
 ## Security Considerations
