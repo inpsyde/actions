@@ -48,7 +48,7 @@ jobs:
       - name: Run Action with Valid Configuration
         uses: ./setup-wireguard
         with:
-          WIREGUARD_CONFIGURATION: |
+          wireguard-configuration: |
             [Interface]
             PrivateKey = ${{ needs.generate-config.outputs.PRIVATE_KEY }}
             Address = ${{ needs.generate-config.outputs.INTERNAL_IP }}/24
@@ -76,7 +76,7 @@ jobs:
         id: invalid_test
         uses: ./setup-wireguard
         with:
-          WIREGUARD_CONFIGURATION: |
+          wireguard-configuration: |
             [Interface]
             PrivateKey = ${{ needs.generate-config.outputs.PRIVATE_KEY }}
             Address = ${{ needs.generate-config.outputs.INTERNAL_IP }}/24

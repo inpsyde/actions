@@ -16,4 +16,4 @@ jobs:
       LINT_TOOLS: '["md-docs"]'
 
   actionlint:
-    uses: inpsyde/reusable-workflows/.github/workflows/lint-workflows.yml@feat/actionlint
+    uses: inpsyde/reusable-workflows/.github/workflows/lint-workflows.yml@main
