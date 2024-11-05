@@ -13,6 +13,9 @@ runs:
         echo "${{ inputs.wireguard-configuration }}" > wg0.conf
         sudo chmod 600 wg0.conf
 
+        # Ensure wg0.conf is deleted on exit
+        trap 'rm -f wg0.conf' EXIT
+
         if grep -E '^\s*(PreUp|PostUp|PreDown|PostDown)\s*=' wg0.conf >/dev/null; then
           echo "Error: Configuration contains disallowed and potentially dangerous directives (PreUp, PostUp, PreDown, PostDown)."
           exit 1

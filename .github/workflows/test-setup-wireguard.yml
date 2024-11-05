@@ -64,6 +64,15 @@ jobs:
         run: |
           curl --fail http://192.168.4.1
 
+      - name: Verify Config File Removal
+        run: |
+          if [ -f wg0.conf ]; then
+            echo "Error: wg0.conf file exists when it should have been deleted."
+            exit 1
+          else
+            echo "Success: wg0.conf file has been deleted."
+          fi
+
   test-invalid-config:
     name: Test with Invalid Configuration
     needs: generate-config
@@ -100,3 +109,13 @@ jobs:
         run: |
           echo "Test failed: action did not fail as expected."
           exit 1
+
+      - name: Verify Config File Removal on Failure
+        if: ${{ steps.invalid_test.outcome == 'failure' }}
+        run: |
+          if [ -f wg0.conf ]; then
+            echo "Error: wg0.conf file exists after action failure."
+            exit 1
+          else
+            echo "Success: wg0.conf file does not exist after action failure."
+          fi
