@@ -13,7 +13,7 @@
         "url": "https://github.com/inpsyde/actions/issues"
     },
     "devDependencies": {
-        "@wordpress/scripts": "^30.0.0"
+        "@wordpress/scripts": "^31.4.0"
     },
     "keywords": [
         "github-actions",
